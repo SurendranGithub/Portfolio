@@ -46,6 +46,14 @@ export default {
           'Roboto',
           'sans-serif',
         ],
+        mono: [
+          'JetBrains Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Consolas',
+          'monospace',
+        ],
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -61,10 +69,15 @@ export default {
           '0%, 100%': { opacity: '0.6' },
           '50%': { opacity: '1' },
         },
+        blink: {
+          '0%, 49%': { opacity: '1' },
+          '50%, 100%': { opacity: '0' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards',
         'subtle-pulse': 'subtle-pulse 2.4s ease-in-out infinite',
+        blink: 'blink 1.1s steps(1, end) infinite',
       },
     },
   },

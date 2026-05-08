@@ -37,6 +37,7 @@ export function BlurText({
   const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.2 });
   const tokens = animateBy === 'word' ? text.split(' ') : Array.from(text);
   const offset = direction === 'top' ? '-0.5em' : '0.5em';
+  const SEPARATOR = ' '; // non-breaking space — survives inline-block trimming
 
   return (
     <span ref={ref} className={cn('inline-block', className)} aria-label={text}>
@@ -55,7 +56,7 @@ export function BlurText({
         return (
           <span key={i} style={style} aria-hidden="true">
             {t}
-            {animateBy === 'word' && i < tokens.length - 1 ? ' ' : ''}
+            {animateBy === 'word' && i < tokens.length - 1 ? SEPARATOR : ''}
           </span>
         );
       })}

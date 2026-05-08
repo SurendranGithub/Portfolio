@@ -3,11 +3,11 @@ import { useActiveSection } from '@/hooks/useActiveSection';
 import { cn } from '@/lib/utils';
 
 const links = [
+  { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
 ] as const;
 
 const ids = links.map((l) => l.href.slice(1));
@@ -23,57 +23,66 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const surface = cn(
+    'border bg-background/70 backdrop-blur-xl transition-all duration-300',
+    scrolled
+      ? 'border-border/80 bg-background/85 shadow-[0_8px_28px_-12px_hsl(0_0%_0%/0.6)]'
+      : 'border-border/60',
+  );
+
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl transition-all duration-300',
-        scrolled
-          ? 'border-border/60 bg-background/70 shadow-[0_1px_0_0_hsl(var(--border)/0.4)]'
-          : 'border-border/20 bg-background/30',
-      )}
-    >
-      <nav className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-5">
+      <div className="flex items-center gap-2 sm:gap-3">
         <a
           href="#hero"
-          className="text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
+          aria-label="Home"
+          className={cn(
+            'flex h-12 w-12 items-center justify-center rounded-full font-mono text-sm font-bold tracking-tight text-foreground',
+            surface,
+          )}
         >
-          Surendran<span className="text-accent">.</span>
+          S<span className="text-accent">.</span>
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
-          {links.map((link) => {
-            const isActive = active === link.href.slice(1);
-            return (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={cn(
-                    'relative rounded-md px-3 py-2 text-sm transition-colors',
-                    isActive
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground',
-                  )}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-3 -bottom-px h-px bg-foreground/70"
-                    />
-                  )}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <nav
+          aria-label="Primary"
+          className={cn(
+            'hidden items-center rounded-full p-1.5 md:flex',
+            surface,
+          )}
+        >
+          <ul className="flex items-center">
+            {links.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={cn(
+                      'inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors',
+                      isActive
+                        ? 'bg-foreground text-background'
+                        : 'text-muted-foreground hover:text-foreground',
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
         <a
           href="#contact"
-          className="hidden rounded-md border border-border bg-secondary/30 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-border/80 hover:bg-secondary/60 md:inline-flex"
+          className={cn(
+            'inline-flex h-12 items-center rounded-full px-5 text-sm font-medium text-foreground transition-colors hover:bg-secondary/40',
+            surface,
+          )}
         >
-          Get in touch
+          Contact
         </a>
-      </nav>
+      </div>
     </header>
   );
 }
