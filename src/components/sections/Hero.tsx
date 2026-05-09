@@ -96,7 +96,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-background"
       />
 
-      <div className="absolute right-6 top-24 sm:right-10 sm:top-28">
+      <div className="absolute right-6 top-24 hidden sm:right-10 sm:top-28 sm:block">
         <Clock />
       </div>
 
@@ -144,12 +144,6 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={1100}>
-          <p className="mx-auto mt-8 max-w-xl text-balance text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-            {profile.tagline}
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={1300}>
           <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground">
             {socials.map((s, i) => (
               <li key={s.label} className="flex items-center gap-3">
@@ -171,7 +165,7 @@ export function Hero() {
           </ul>
         </FadeIn>
 
-        <FadeIn delay={1500}>
+        <FadeIn delay={1300}>
           <a
             href="#about"
             aria-label="Scroll to next section"

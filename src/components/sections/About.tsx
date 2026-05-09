@@ -11,7 +11,7 @@ export function About() {
       <div className="grid items-center gap-y-10 lg:grid-cols-[minmax(0,400px)_1fr] lg:items-start lg:gap-x-16 lg:gap-y-0">
         <div>
           <FadeIn>
-            <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
+            <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
               About <span className="text-accent">Me</span>
             </h2>
           </FadeIn>

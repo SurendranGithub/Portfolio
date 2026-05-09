@@ -80,7 +80,7 @@ export function Projects() {
     <Section id="projects" className="py-24 sm:py-28 lg:py-32">
       <FadeIn>
         <div className="mb-14 flex flex-col gap-4 sm:mb-20">
-          <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
+          <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
             Selected <span className="text-accent">projects</span>
           </h2>
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">

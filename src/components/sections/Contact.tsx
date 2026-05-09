@@ -53,7 +53,7 @@ export function Contact() {
         </FadeIn>
 
         <FadeIn delay={100}>
-          <h2 className="mt-8 text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[5rem] lg:leading-[0.95]">
+          <h2 className="mt-8 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[5rem] lg:leading-[0.95]">
             Let's <span className="text-accent">build</span> something.
           </h2>
         </FadeIn>

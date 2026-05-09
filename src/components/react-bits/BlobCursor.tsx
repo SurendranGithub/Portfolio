@@ -34,10 +34,11 @@ export default function BlobCursor({
     if (typeof window === 'undefined') return;
 
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const isSmallScreen = window.matchMedia('(max-width: 1023px)').matches;
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
-    if (isTouch || reducedMotion) return;
+    if (isTouch || isSmallScreen || reducedMotion) return;
 
     document.documentElement.classList.add('blob-cursor-active');
 

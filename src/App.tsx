@@ -10,7 +10,7 @@ import { Contact } from '@/components/sections/Contact';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground antialiased selection:bg-foreground/15">
+    <div className="relative min-h-screen overflow-x-clip bg-background text-foreground antialiased selection:bg-foreground/15">
       <BlobCursor />
       <Navbar />
       <main>

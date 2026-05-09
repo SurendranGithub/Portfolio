@@ -10,7 +10,7 @@ export function Experience() {
   return (
     <Section id="experience" className="py-24 sm:py-28 lg:py-32">
       <FadeIn>
-        <h2 className="mb-14 text-balance text-5xl font-bold tracking-tight text-foreground sm:mb-20 sm:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
+        <h2 className="mb-14 text-balance text-4xl font-bold tracking-tight text-foreground sm:mb-20 sm:text-5xl md:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
           My <span className="text-accent">experience</span>
         </h2>
       </FadeIn>
@@ -32,8 +32,17 @@ export function Experience() {
             const dotActive = progress >= dotProgress * 0.9;
             return (
               <FadeIn key={item.id} delay={i * 100}>
-                <article className="grid gap-y-4 sm:grid-cols-[200px_1fr] sm:gap-x-10 lg:grid-cols-[240px_1fr] lg:gap-x-14">
-                  <div className="flex items-start gap-4 sm:pt-1.5">
+                <article className="relative pl-8 sm:grid sm:grid-cols-[200px_1fr] sm:gap-x-10 sm:pl-0 lg:grid-cols-[240px_1fr] lg:gap-x-14">
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'absolute left-0 top-1 z-10 h-4 w-4 shrink-0 rounded-full border-2 transition-colors duration-300 sm:hidden',
+                      dotActive
+                        ? 'border-accent bg-accent'
+                        : 'border-border bg-secondary/40',
+                    )}
+                  />
+                  <div className="hidden sm:flex sm:items-start sm:gap-4 sm:pt-1.5">
                     <span
                       aria-hidden
                       className={cn(
@@ -43,13 +52,16 @@ export function Experience() {
                           : 'border-border bg-secondary/40',
                       )}
                     />
-                    <time className="text-sm text-muted-foreground sm:text-[0.95rem]">
+                    <time className="text-[0.95rem] text-muted-foreground">
                       {item.start} – {item.end}
                     </time>
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    <time className="block text-sm text-muted-foreground sm:hidden">
+                      {item.start} – {item.end}
+                    </time>
+                    <h3 className="mt-2 text-xl font-bold tracking-tight text-foreground sm:mt-0 sm:text-2xl md:text-3xl">
                       {item.role}{' '}
                       <span className="text-accent">@{item.company}</span>
                     </h3>
@@ -57,7 +69,7 @@ export function Experience() {
                       {item.location}
                       {item.type && (
                         <>
-                          <span aria-hidden className="mx-2 text-border">
+                          <span aria-hidden className="mx-2 text-muted-foreground/50">
                             ·
                           </span>
                           <span className="capitalize">
