@@ -8,10 +8,8 @@ export const profile: Profile = {
   location: 'Tiruchirappalli, Tamil Nadu · Open to Relocation',
   email: 'surendran210703@gmail.com',
   phone: '+91 8610715268',
-  // TODO: replace with your full LinkedIn profile URL
-  linkedin: 'https://www.linkedin.com/in/',
-  // TODO: replace with your full GitHub profile URL
-  github: 'https://github.com/',
+  linkedin: 'https://www.linkedin.com/in/surendran-prasanna-790343226/',
+  github: 'https://github.com/SurendranGithub/',
   status: 'Available for backend roles',
   about:
     "I'm a backend developer focused on building reliable systems with Node.js and TypeScript — APIs, data pipelines, and AI-integrated workflows that hold up in production. I care about correctness, observability, and the small details that make software feel solid.",
