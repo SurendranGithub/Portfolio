@@ -105,10 +105,18 @@ export function Hero() {
           <Avatar />
         </FadeIn>
 
-        <FadeIn delay={200}>
+        <FadeIn delay={150}>
+          <p className="mt-6 text-base text-muted-foreground sm:text-lg">
+            Hi, I'm{' '}
+            <span className="font-semibold text-foreground">Surendran</span>
+            <span className="text-accent">.</span>
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={300}>
           <h1
             className={cn(
-              'mx-auto mt-8 max-w-2xl text-balance font-bold uppercase leading-[1.04] tracking-[-0.01em] text-foreground',
+              'mx-auto mt-6 max-w-2xl text-balance font-bold uppercase leading-[1.04] tracking-[-0.01em] text-foreground',
               'text-[2rem] sm:text-5xl md:text-[3.5rem] lg:text-[4rem]',
             )}
           >
