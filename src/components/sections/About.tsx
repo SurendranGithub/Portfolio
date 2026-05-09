@@ -8,7 +8,7 @@ import { profile } from '@/data/profile';
 export function About() {
   return (
     <Section id="about" className="py-24 sm:py-28 lg:py-32">
-      <div className="grid items-center gap-y-10 lg:grid-cols-[minmax(0,400px)_1fr] lg:items-start lg:gap-x-16 lg:gap-y-0">
+      <div className="grid items-center gap-y-10 text-center lg:grid-cols-[minmax(0,400px)_1fr] lg:items-start lg:gap-x-16 lg:gap-y-0 lg:text-left">
         <div>
           <FadeIn>
             <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
@@ -17,7 +17,7 @@ export function About() {
           </FadeIn>
 
           <FadeIn delay={150}>
-            <div className="mt-8 flex items-center gap-2 lg:mt-10">
+            <div className="mt-8 flex items-center justify-center gap-2 lg:mt-10 lg:justify-start">
               <Button asChild size="lg" className="h-14 rounded-xl px-6 text-base">
                 <a href="#contact">Let's Contact</a>
               </Button>
@@ -31,7 +31,7 @@ export function About() {
         </div>
 
         <div className="lg:pt-2">
-          <p className="text-balance text-lg leading-[1.65] text-muted-foreground sm:text-xl">
+          <p className="mx-auto max-w-xl text-balance text-base leading-[1.65] text-muted-foreground sm:text-lg lg:mx-0 lg:max-w-none lg:text-xl">
             <BlurText
               text={profile.about}
               animateBy="word"
