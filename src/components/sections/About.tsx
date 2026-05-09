@@ -1,48 +1,52 @@
+import { ArrowUpRight } from 'lucide-react';
 import { Section } from '@/components/layout/Section';
+import { Button } from '@/components/ui/button';
+import { BlurText } from '@/components/react-bits/BlurText';
 import { FadeIn } from '@/components/react-bits/FadeIn';
 import { profile } from '@/data/profile';
-import { education } from '@/data/experience';
 
 export function About() {
   return (
     <Section
       id="about"
-      eyebrow="About"
-      title="Backend developer with a product mindset."
+      className="py-24 sm:py-28 lg:py-32"
+      containerClassName="max-w-7xl"
     >
-      <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
-        <FadeIn>
-          <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
-            {profile.about.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        </FadeIn>
+      <div className="grid items-center gap-y-10 lg:grid-cols-[minmax(0,460px)_1fr] lg:items-start lg:gap-x-24 lg:gap-y-0">
+        <div>
+          <FadeIn>
+            <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[5rem] lg:leading-[0.95]">
+              About <span className="text-accent">Me</span>
+            </h2>
+          </FadeIn>
 
-        <FadeIn delay={120}>
-          <div className="rounded-xl border border-border bg-card/40 p-6">
-            <h3 className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Education
-            </h3>
-            <p className="mt-4 text-base font-medium text-foreground">
-              {education.degree}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {education.institution}
-            </p>
-            <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
-              <span>
-                {education.start} — {education.end}
-              </span>
-              {education.cgpa && (
-                <>
-                  <span aria-hidden className="h-1 w-1 rounded-full bg-border" />
-                  <span>CGPA {education.cgpa}</span>
-                </>
-              )}
+          <FadeIn delay={150}>
+            <div className="mt-8 flex items-center gap-2 lg:mt-10">
+              <Button asChild size="lg" className="h-14 rounded-xl px-6 text-base">
+                <a href="#contact">Let's Contact</a>
+              </Button>
+              <Button asChild size="icon" className="h-14 w-14 rounded-xl">
+                <a href="#contact" aria-label="Open contact section">
+                  <ArrowUpRight className="h-5 w-5" />
+                </a>
+              </Button>
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
+        </div>
+
+        <div className="lg:pt-3">
+          <p className="max-w-xl text-balance text-lg leading-[1.65] text-muted-foreground sm:text-xl">
+            <BlurText
+              text={profile.about}
+              animateBy="word"
+              step={28}
+              duration={700}
+              blur={8}
+              direction="bottom"
+              className="block"
+            />
+          </p>
+        </div>
       </div>
     </Section>
   );

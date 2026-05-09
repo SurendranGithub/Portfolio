@@ -8,6 +8,7 @@ interface SectionProps {
   description?: string;
   children: ReactNode;
   className?: string;
+  containerClassName?: string;
 }
 
 export function Section({
@@ -17,13 +18,14 @@ export function Section({
   description,
   children,
   className,
+  containerClassName,
 }: SectionProps) {
   return (
     <section
       id={id}
       className={cn('relative scroll-mt-24 py-24 sm:py-32', className)}
     >
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className={cn('container mx-auto max-w-6xl px-6', containerClassName)}>
         {(eyebrow || title || description) && (
           <header className="mb-14 max-w-2xl">
             {eyebrow && (

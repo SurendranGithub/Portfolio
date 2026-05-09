@@ -8,7 +8,7 @@ export interface Profile {
   linkedin?: string;
   github?: string;
   resumeUrl?: string;
-  about: string[];
+  about: string;
   status?: string;
 }
 
