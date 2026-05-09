@@ -176,6 +176,18 @@
   }
 }
 
+/* React Bits — Blob Cursor: hide native cursor when blob is active */
+.blob-cursor-active,
+.blob-cursor-active *,
+.blob-cursor-active a,
+.blob-cursor-active button,
+.blob-cursor-active input,
+.blob-cursor-active textarea,
+.blob-cursor-active select,
+.blob-cursor-active [role='button'] {
+  cursor: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
