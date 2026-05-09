@@ -7,15 +7,11 @@ import { profile } from '@/data/profile';
 
 export function About() {
   return (
-    <Section
-      id="about"
-      className="py-24 sm:py-28 lg:py-32"
-      containerClassName="max-w-7xl"
-    >
-      <div className="grid items-center gap-y-10 lg:grid-cols-[minmax(0,460px)_1fr] lg:items-start lg:gap-x-24 lg:gap-y-0">
+    <Section id="about" className="py-24 sm:py-28 lg:py-32">
+      <div className="grid items-center gap-y-10 lg:grid-cols-[minmax(0,400px)_1fr] lg:items-start lg:gap-x-16 lg:gap-y-0">
         <div>
           <FadeIn>
-            <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[5rem] lg:leading-[0.95]">
+            <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
               About <span className="text-accent">Me</span>
             </h2>
           </FadeIn>
@@ -34,8 +30,8 @@ export function About() {
           </FadeIn>
         </div>
 
-        <div className="lg:pt-3">
-          <p className="max-w-xl text-balance text-lg leading-[1.65] text-muted-foreground sm:text-xl">
+        <div className="lg:pt-2">
+          <p className="text-balance text-lg leading-[1.65] text-muted-foreground sm:text-xl">
             <BlurText
               text={profile.about}
               animateBy="word"
