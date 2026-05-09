@@ -1,95 +1,103 @@
 import { ArrowUpRight, Github } from 'lucide-react';
 import { Section } from '@/components/layout/Section';
 import { FadeIn } from '@/components/react-bits/FadeIn';
+import {
+  ScrollStack,
+  ScrollStackItem,
+} from '@/components/react-bits/ScrollStack';
 import { projects } from '@/data/projects';
+import type { Project } from '@/types';
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+function ProjectCard({ project, index }: ProjectCardProps) {
+  const indexLabel = String(index + 1).padStart(2, '0');
+
+  return (
+    <div className="flex min-h-[420px] flex-col p-8 sm:min-h-[460px] sm:p-12 lg:min-h-[500px] lg:p-16">
+      <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
+        <span className="text-accent">{indexLabel}</span>
+        <span aria-hidden className="h-px w-6 bg-border" />
+        <span>{project.tagline}</span>
+      </div>
+
+      <h3 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
+        {project.name}
+      </h3>
+
+      <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+        {project.description}
+      </p>
+
+      <div className="mt-auto pt-10">
+        <ul className="flex flex-wrap gap-1.5">
+          {project.stack.map((s) => (
+            <li
+              key={s}
+              className="rounded-md border border-border/70 bg-secondary/40 px-2.5 py-1 text-[0.7rem] font-medium tracking-wide text-foreground/80"
+            >
+              {s}
+            </li>
+          ))}
+        </ul>
+
+        {(project.github || project.demo) && (
+          <div className="mt-6 flex items-center gap-2">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/30 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/60"
+              >
+                <Github className="h-4 w-4" />
+                Code
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+              >
+                <ArrowUpRight className="h-4 w-4" />
+                Live
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function Projects() {
   return (
-    <Section
-      id="projects"
-      eyebrow="Featured Projects"
-      title="Selected work."
-      description="A few projects I've shipped — backend systems, AI-integrated workflows, and full-stack platforms."
-    >
-      <div className="grid gap-5 lg:grid-cols-2">
-        {projects.map((p, i) => (
-          <FadeIn key={p.id} delay={i * 80}>
-            <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-border/40 hover:bg-card/60 sm:p-8">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              />
+    <Section id="projects" className="py-24 sm:py-28 lg:py-32">
+      <FadeIn>
+        <div className="mb-14 flex flex-col gap-4 sm:mb-20">
+          <h2 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem] lg:leading-[0.95]">
+            Selected <span className="text-accent">projects</span>
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            A few things I've shipped — backend systems, AI-integrated workflows, and full-stack platforms.
+          </p>
+        </div>
+      </FadeIn>
 
-              <header className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-                </div>
-                <div className="flex shrink-0 items-center gap-1">
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${p.name} on GitHub`}
-                      className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
-                    >
-                      <Github className="h-4 w-4" />
-                    </a>
-                  )}
-                  {p.demo && (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${p.name} live demo`}
-                      className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
-                    >
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </header>
-
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                {p.description}
-              </p>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div>
-                  <h4 className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground/80">
-                    Problem
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {p.problem}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground/80">
-                    Impact
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {p.impact}
-                  </p>
-                </div>
-              </div>
-
-              <ul className="mt-6 flex flex-wrap gap-1.5">
-                {p.stack.map((s) => (
-                  <li
-                    key={s}
-                    className="rounded-md border border-border/70 bg-secondary/30 px-2 py-0.5 text-[0.7rem] font-medium text-foreground/80"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </FadeIn>
+      <ScrollStack topOffset={96} stackOffset={32}>
+        {projects.map((project, i) => (
+          <ScrollStackItem key={project.id}>
+            <ProjectCard project={project} index={i} />
+          </ScrollStackItem>
         ))}
-      </div>
+      </ScrollStack>
+
+      <div aria-hidden className="h-32" />
     </Section>
   );
 }

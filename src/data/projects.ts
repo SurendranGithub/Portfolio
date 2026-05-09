@@ -12,9 +12,7 @@ export const projects: Project[] = [
     impact:
       'VAT module categorises invoices by TRN, reconciles bank data, and exports VAT 201-ready Excel reports. CT module supports 4 input workflows with auto-mapping through Trial Balance, P&L, and Balance Sheet — producing consolidated PDF output.',
     stack: ['Node.js', 'TypeScript', 'Python', 'Gemini API', 'Supabase', 'PostgreSQL', 'GCP'],
-    // TODO: add a public GitHub repo URL if available
     github: '',
-    // TODO: add a live demo URL if available
     demo: '',
     featured: true,
   },
