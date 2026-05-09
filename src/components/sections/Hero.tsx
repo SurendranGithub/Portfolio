@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { FadeIn } from '@/components/react-bits/FadeIn';
 import Particles from '@/components/react-bits/Particles';
@@ -47,18 +47,6 @@ function Avatar() {
     </div>
   );
 }
-
-interface HeadlinePart {
-  text: string;
-  highlight?: boolean;
-}
-
-const HEADLINE: HeadlinePart[] = [
-  { text: 'Backend Developer', highlight: true },
-  { text: 'for teams shipping' },
-  { text: 'Node.js & AI-integrated', highlight: true },
-  { text: 'products' },
-];
 
 interface SocialLink {
   label: string;
@@ -120,22 +108,16 @@ export function Hero() {
         <FadeIn delay={200}>
           <h1
             className={cn(
-              'mx-auto mt-7 max-w-3xl text-balance font-extrabold uppercase leading-[1.02] tracking-tight text-foreground',
-              'text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]',
+              'mx-auto mt-8 max-w-2xl text-balance font-bold uppercase leading-[1.04] tracking-[-0.01em] text-foreground',
+              'text-[2rem] sm:text-5xl md:text-[3.5rem] lg:text-[4rem]',
             )}
           >
-            {HEADLINE.map((part, i) => (
-              <Fragment key={i}>
-                {part.highlight ? (
-                  <span className="box-decoration-clone rounded-md bg-accent px-2 py-0.5 text-accent-foreground">
-                    {part.text}
-                  </span>
-                ) : (
-                  part.text
-                )}
-                {i < HEADLINE.length - 1 ? ' ' : ''}
-              </Fragment>
-            ))}
+            <span className="text-foreground/90">I build </span>
+            <span className="text-accent">reliable backends</span>
+            <span className="text-foreground/90"> and </span>
+            <span className="text-accent">AI-integrated</span>
+            <span className="text-foreground/90"> products</span>
+            <span className="text-accent">.</span>
           </h1>
         </FadeIn>
 

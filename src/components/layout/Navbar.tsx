@@ -61,7 +61,7 @@ export function Navbar() {
                     className={cn(
                       'inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors',
                       isActive
-                        ? 'bg-foreground text-background'
+                        ? 'bg-accent text-accent-foreground'
                         : 'text-muted-foreground hover:text-foreground',
                     )}
                   >
