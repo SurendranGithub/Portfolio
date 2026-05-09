@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
 ] as const;
 
 const ids = links.map((l) => l.href.slice(1));
