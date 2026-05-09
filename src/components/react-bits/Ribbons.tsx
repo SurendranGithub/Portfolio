@@ -203,7 +203,7 @@ export default function Ribbons({
           );
         }
 
-        line.polyline.uniforms.uTime.value = t * 0.001;
+        line.polyline.program.uniforms.uTime.value = t * 0.001;
         line.polyline.updateGeometry();
       });
 
